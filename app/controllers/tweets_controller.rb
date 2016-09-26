@@ -19,12 +19,12 @@ class TweetsController < ApplicationController
   end
 
   def edit
-    @teet = Tweet.find(params[:id])
+    @tweet = Tweet.find(params[:id])
   end
 
   def update
     tweet = Tweet.find(params[:id])
-    tweet.update if current_user.id == tweet.user_id
+    tweet.update(tweet_params) if current_user.id == tweet.user_id
   end
 
   private

@@ -13,6 +13,11 @@ class TweetsController < ApplicationController
     @tweet = Tweet.create(text: tweet_params[:text], image: tweet_params[:image], user_id: current_user.id)
   end
 
+  def destroy
+    tweet = Tweet.find(params[:id])
+    tweet.destroy if current_user.id == tweet.user_id
+  end
+
   private
   def tweet_params
     params.permit(:text, :image)

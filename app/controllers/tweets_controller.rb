@@ -13,11 +13,12 @@ class TweetsController < ApplicationController
     @tweet = Tweet.create(text: tweet_params[:text], image: tweet_params[:image], user_id: current_user.id)
   end
 
-private
-def tweet_params
-  params.permit(:text, :image)
-end
+  private
+  def tweet_params
+    params.permit(:text, :image)
+  end
 
-def move_to_index
-  redirect_to action: :index unless user_signed_in?
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
 end
